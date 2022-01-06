@@ -1,4 +1,4 @@
-name: test_line_notify
+name: horse_notify
 
 on:
  schedule:
