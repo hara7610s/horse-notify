@@ -5,7 +5,7 @@ import datetime
 def main():
     today = datetime.date.today()
 
-    kaisai_date = today + datetime.timedelta(days=5)
+    kaisai_date = today + datetime.timedelta(days=1)
  
     driver = find_race.driver_init()
  
