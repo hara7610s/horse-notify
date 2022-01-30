@@ -1,20 +1,5 @@
-from selenium import webdriver
 import bs4
-import requests
 import re
-
-from get_chrome_driver import GetChromeDriver
-
-get_driver = GetChromeDriver()
-get_driver.install()
- 
-def driver_init():
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless')
- 
-    driver = webdriver.Chrome(options=options)
- 
-    return driver
 
 def get_race(driver, page):
     driver.get(page)
