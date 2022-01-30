@@ -7,7 +7,7 @@ import datetime
 def main():
     today = datetime.date.today()
 
-    kaisai_date = today + datetime.timedelta(days=6)
+    kaisai_date = today + datetime.timedelta(days=1)
  
     driver = driver_init.driver_init()
  
