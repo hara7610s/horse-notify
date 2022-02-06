@@ -3,6 +3,7 @@ import driver_init
 import find_race
 import find_horse
 import datetime
+import spreadsheet
 
 def main():
     today = datetime.date.today()
@@ -27,6 +28,9 @@ def main():
     line.notify_message(horse_list)
 
     driver.quit()
+
+    my_horses = spreadsheet.read_spreadsheet()
+    line.notify_message(my_horses)
 
 
 if __name__ == "__main__":
