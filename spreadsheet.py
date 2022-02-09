@@ -5,7 +5,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 def read_spreadsheet():
-    json_open = open("./config/gcp_secret.json", "r")
+    json_open = open("./gcp_secret.json", "r")
     gcp_secret = json.load(json_open)
 
     scope =['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
