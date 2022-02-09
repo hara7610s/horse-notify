@@ -26,6 +26,12 @@ jobs:
           pip install lxml
           pip install gspread
           pip install oauth2client
+      - name: Translate secrets of base64 into json
+        env:
+          JSON_DECODE: ${{ secrets.GCP_SECRET }}
+
+        run: |
+          echo-n $JSON_DECODE | base64 --decode > ./config/gcp_secret.json
       - name: Run script
         env:
           LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
