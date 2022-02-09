@@ -30,8 +30,9 @@ jobs:
         env:
           GCP_SECRET: ${{ secrets.GCP_SECRET }}
         run: |
-          touch ./config/gcp_secret.json
-          echo $GCP_SECRET | base64 --decode > ./config/gcp_secret.json
+          touch gcp_secret.json
+          ls -a
+          echo $GCP_SECRET | base64 --decode > gcp_secret.json
       - name: Run script
         env:
           LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}

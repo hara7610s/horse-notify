@@ -9,7 +9,7 @@ def read_spreadsheet():
     gcp_secret = json.load(json_open)
 
     scope =['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-    creds = ServiceAccountCredentials.from_json_keyfile_name("./config/gcp_secret.json", scope)
+    creds = ServiceAccountCredentials.from_json_keyfile_name("gcp_secret.json", scope)
     client = gspread.authorize(creds)
 
     sheet = client.open("horse_DB").sheet1
