@@ -31,7 +31,7 @@ jobs:
           JSON_DECODE: ${{ secrets.GCP_SECRET }}
 
         run: |
-          echo-n $JSON_DECODE | base64 --decode > ./config/gcp_secret.json
+          echo -n $JSON_DECODE | base64 --decode > ./config/gcp_secret.json
       - name: Run script
         env:
           LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
