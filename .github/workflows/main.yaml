@@ -2,7 +2,7 @@ name: horse_notify
 
 on:
  schedule:
-   - cron: '*/10 * * * *'
+   - cron: '15 10 * * *'
 
 jobs:
   build:
