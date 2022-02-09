@@ -26,11 +26,16 @@ def main():
 
     driver.quit()
 
+    line.notify_message(horse_list)
+
     my_horses = spreadsheet.read_spreadsheet()
+    line.notify_message(my_horses)
 
     for horse in horse_list:
         if horse in my_horses:
             line.notify_message(horse)
+        else:
+            line.notify_message("NIL")
 
 if __name__ == "__main__":
     main()
