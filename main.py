@@ -8,7 +8,7 @@ import spreadsheet
 def main():
     today = datetime.date.today()
 
-    kaisai_date = today + datetime.timedelta(days=1)
+    kaisai_date = today + datetime.timedelta(days=3)
  
     driver = driver_init.driver_init()
  
@@ -24,14 +24,13 @@ def main():
 
         horse_list += each_race
 
-
-    line.notify_message(horse_list)
-
     driver.quit()
 
     my_horses = spreadsheet.read_spreadsheet()
-    line.notify_message(my_horses)
 
+    for horse in horse_list:
+        if horse in my_horses:
+            line.notify_message(horse)
 
 if __name__ == "__main__":
     main()
