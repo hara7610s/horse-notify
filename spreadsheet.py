@@ -9,7 +9,7 @@ def read_spreadsheet():
 
     sheet = client.open("horse_DB").sheet1
     mylist = sheet.col_values(1)
-    mylist_utf8 = map(lambda s:s.encode("utf-8"), sheet)
+    mylist_utf8 = map(lambda s:s.encode("utf-8"), mylist)
 
     return mylist_utf8
 
