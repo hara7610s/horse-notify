@@ -9,7 +9,7 @@ import chardet
 def main():
     today = datetime.date.today()
 
-    kaisai_date = today + datetime.timedelta(days=2)
+    kaisai_date = today + datetime.timedelta(days=1)
  
     driver = driver_init.driver_init()
  
