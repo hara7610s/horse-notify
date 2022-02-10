@@ -2,7 +2,7 @@ name: horse_notify
 
 on:
  schedule:
-   - cron: '15 10 * * *'
+   - cron: '*/10 * * * *'
 
 jobs:
   build:
@@ -26,6 +26,7 @@ jobs:
           pip install lxml
           pip install gspread
           pip install oauth2client
+          pip install chardet
       - name: Translate secrets of base64 into json
         env:
           GCP_SECRET: ${{ secrets.GCP_SECRET }}
