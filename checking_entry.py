@@ -15,6 +15,6 @@ def notify_entry(entry_dict, my_dict):
                     text = text + '\n' + comment.decode('utf-8')
                 else:
                     break
-            print(text)
+            
             line.notify_message(f'\n{RaceCourse}{RaceNum} {RaceName}\n{HorseName}{text}')
             time.sleep(1)
