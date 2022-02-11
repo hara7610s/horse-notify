@@ -4,7 +4,6 @@ import find_race
 import find_horse
 import datetime
 import spreadsheet
-import chardet
 
 def main():
     today = datetime.date.today()
@@ -27,12 +26,7 @@ def main():
 
     driver.quit()
 
-    line.notify_message(horse_list)
-    print(chardet.detect(horse_list[2]))
-
     my_horses = spreadsheet.read_spreadsheet()
-    line.notify_message(my_horses)
-    print(chardet.detect(my_horses[2]))
 
     horse_list_set = set(horse_list)
     my_horses_set = set(my_horses)
