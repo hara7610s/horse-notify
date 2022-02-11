@@ -1,8 +1,9 @@
-name: horse_notify
+name: develop
 
 on:
- schedule:
-   - cron: '15 10 * * *'
+  push:
+    branches:
+      - develop
 
 jobs:
   build:
