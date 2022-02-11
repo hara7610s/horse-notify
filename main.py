@@ -26,8 +26,7 @@ def main():
     line.notify_message(kaisai_date)
     for my_horse in my_dict:
         if my_horse in list(entry_dict.keys()):
-            message = [my_horse, entry_dict[my_horse], my_dict[my_horse]]
-            line.notify_message(message)
+            line.notify_message(f'\n{entry_dict[my_horse][0]} {entry_dict[my_horse][1]} {entry_dict[my_horse][2]}\n{my_horse}\n{my_dict[my_horse]}')
 
 if __name__ == "__main__":
     main()
