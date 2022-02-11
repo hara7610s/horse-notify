@@ -18,5 +18,6 @@ def read_spreadsheet():
     
     mydict = dict(mylist_utf8)
 
+
     return mydict
 
