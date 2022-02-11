@@ -1,7 +1,9 @@
 import time
 import driver_init
 
-def make_entry_dict(url):
+def make_entry_dict(race_id):
+    url = "https://race.netkeiba.com/race/shutuba.html?race_id=" + race_id
+    
     driver = driver_init.driver_init()
     driver.get(url)
 
@@ -12,16 +14,16 @@ def make_entry_dict(url):
     RaceInfo = [RaceCourse.encode('utf-8'), RaceNum.encode('utf-8'), RaceName.encode('utf-8')]
 
     elements = driver.find_elements_by_class_name('HorseList')
-    dict = {}
+    entry_dict = {}
 
     for element in elements:
         horsenames = element.find_elements_by_class_name('HorseName')
 
         for horsename in horsenames:
             title = horsename.find_element_by_tag_name('a').get_attribute('title')
-            dict[title.encode("utf-8")] = RaceInfo
+            entry_dict[title.encode("utf-8")] = RaceInfo
         
     time.sleep(1)
     driver.quit()
     
-    return dict
+    return entry_dict
