@@ -8,9 +8,9 @@ def get_race_list(page):
     driver.get(page)
     count = len(driver.find_elements_by_id("RaceTopRace"))
 
+    info =[]
+
     if count > 0:
-        info = []
-        
         source = driver.page_source
         soup = bs4.BeautifulSoup(source, 'lxml')
 
@@ -36,8 +36,6 @@ def get_race_list(page):
         return info
 
     else:
-        time.sleep(1)
         driver.quit()
-
-        return "NIL"
+        return info
 
