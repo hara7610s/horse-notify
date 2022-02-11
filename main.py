@@ -23,6 +23,7 @@ def main():
     # match entry list and my horse list
     my_dict = spreadsheet.read_spreadsheet()
 
+    line.notify_message(kaisai_date)
     for my_horse in my_dict:
         if my_horse in list(entry_dict.keys()):
             message = [my_horse, entry_dict[my_horse], my_dict[my_horse]]
