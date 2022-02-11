@@ -21,4 +21,3 @@ def read_spreadsheet():
         mydict[l[0]] = l[1:]
 
     return mydict
-
