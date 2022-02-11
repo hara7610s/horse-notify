@@ -1,8 +1,10 @@
 import time
+import driver_init
 
-def scrape_list(driver,url):
-
+def scrape_list(url):
+    driver = driver_init.driver_init()
     driver.get(url)
+
     elements = driver.find_elements_by_class_name('HorseList')
     row = []
 
@@ -14,6 +16,6 @@ def scrape_list(driver,url):
             row.append(title.encode("utf-8"))
         
     time.sleep(1)
-    driver.close()
+    driver.quit()
     
     return row

@@ -1,7 +1,10 @@
+import time
 import bs4
 import re
+import driver_init
 
-def get_race(driver, page):
+def get_race(page):
+    driver = driver_init.driver_init()
     driver.get(page)
     count = len(driver.find_elements_by_id("RaceTopRace"))
 
@@ -26,8 +29,15 @@ def get_race(driver, page):
                     if len(match) > 0:
                         item_id = match[0]
                         info.append(item_id)
+        
+        time.sleep(1)
+        driver.quit()
 
         return info
 
     else:
+        time.sleep(1)
+        driver.quit()
+
         return "NIL"
+
