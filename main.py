@@ -9,23 +9,23 @@ def main():
     today = datetime.date.today()
     kaisai_date = today + datetime.timedelta(days=1)
     race_list_page = "https://race.netkeiba.com/top/race_list_sub.html?kaisai_date=" + kaisai_date.strftime('%Y%m%d')
-    race_list = find_race.get_race(race_list_page)
+    race_list = find_race.get_race_list(race_list_page)
     
     # make a list of horses entered tomorrow
-    horse_list = []
+    entry_dict = {}
 
     for race in race_list:
         url = "https://race.netkeiba.com/race/shutuba.html?race_id=" + race
-        each_race = find_horse.scrape_list(url)
+        each_race = find_horse.make_entry_dict(url)
 
-        horse_list += each_race
+        entry_dict.update(each_race)
 
     # match entry list and my horse list
     my_dict = spreadsheet.read_spreadsheet()
 
     for my_horse in my_dict:
-        if my_horse in horse_list:
-            message = [my_horse, my_dict[my_horse]]
+        if my_horse in list(entry_dict.keys()):
+            message = [my_horse, entry_dict[my_horse], my_dict[my_horse]]
             line.notify_message(message)
 
 if __name__ == "__main__":

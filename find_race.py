@@ -3,7 +3,7 @@ import bs4
 import re
 import driver_init
 
-def get_race(page):
+def get_race_list(page):
     driver = driver_init.driver_init()
     driver.get(page)
     count = len(driver.find_elements_by_id("RaceTopRace"))
