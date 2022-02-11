@@ -8,8 +8,14 @@ def read_spreadsheet():
     client = gspread.authorize(creds)
 
     sheet = client.open("horse_DB").sheet1
-    mylist = sheet.col_values(1)
-    mylist_utf8 = list(map(lambda s:s.encode("utf-8"), mylist))
+    #get all values as list of lists
+    mylists = sheet.get_all_values()
+    
+    mylist_utf8 =[]
+    for mylist in mylists:
+        mylist_utf8.append(list(map(lambda s:s.encode("utf-8"), mylist)))
+    
+    mydict = dict(mylist_utf8)
 
-    return mylist_utf8
+    return mydict
 

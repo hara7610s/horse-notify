@@ -5,13 +5,13 @@ import datetime
 import spreadsheet
 
 def main():
+    # find race pages tomorrow
     today = datetime.date.today()
-
     kaisai_date = today + datetime.timedelta(days=1)
- 
     race_list_page = "https://race.netkeiba.com/top/race_list_sub.html?kaisai_date=" + kaisai_date.strftime('%Y%m%d')
     race_list = find_race.get_race(race_list_page)
-
+    
+    # make a list of horses entered tomorrow
     horse_list = []
 
     for race in race_list:
@@ -20,12 +20,13 @@ def main():
 
         horse_list += each_race
 
-    my_horses = spreadsheet.read_spreadsheet()
+    # match entry list and my horse list
+    my_dict = spreadsheet.read_spreadsheet()
 
-    horse_list_set = set(horse_list)
-    my_horses_set = set(my_horses)
-    entry_list = list(horse_list_set & my_horses_set)
-    line.notify_message(entry_list)
+    for my_horse in my_dict:
+        if my_horse in horse_list:
+            message = [my_horse, my_dict[my_horse]]
+            line.notify_message(message)
 
 if __name__ == "__main__":
     main()
