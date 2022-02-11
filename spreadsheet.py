@@ -16,7 +16,9 @@ def read_spreadsheet():
     for mylist in mylists:
         mylist_utf8.append(list(map(lambda s:s.encode("utf-8"), mylist)))
     
-    mydict = dict(mylist_utf8)
+    mydict = {}
+    for l in mylist_utf8:
+        mydict[l[0]] = l[1:]
 
 
     return mydict
