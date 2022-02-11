@@ -20,6 +20,5 @@ def read_spreadsheet():
     for l in mylist_utf8:
         mydict[l[0]] = l[1:]
 
-
     return mydict
 
