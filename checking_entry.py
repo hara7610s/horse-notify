@@ -9,12 +9,12 @@ def notify_entry(entry_dict, my_dict):
             RaceName = entry_dict[my_horse][2].decode('utf-8')
             HorseName = my_horse.decode('utf-8')
             comments = my_dict[my_horse]
-            text = ""
+            text = ''
             for comment in comments:
-                if comment != '':
+                if comment.decode('utf-8') != '':
                     text = text + '\n' + comment.decode('utf-8')
                 else:
                     break
-            
+            print(text)
             line.notify_message(f'\n{RaceCourse}{RaceNum} {RaceName}\n{HorseName}{text}')
             time.sleep(1)
