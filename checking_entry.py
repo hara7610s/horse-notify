@@ -17,4 +17,4 @@ def notify_entry(entry_dict, my_dict):
                     break
             
             line.notify_message(f'\n{RaceCourse}{RaceNum} {RaceName}\n{HorseName}{text}')
-            time.sleep(1)
+            time.sleep(2)
