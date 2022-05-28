@@ -1,4 +1,3 @@
-import time
 import line
 import find_race
 import find_horse
