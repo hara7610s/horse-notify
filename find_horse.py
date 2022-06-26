@@ -1,5 +1,6 @@
 import time
 import driver_init
+from selenium.webdriver.common.by import By
 
 def make_entry_dict(race_id):
     url = "https://race.netkeiba.com/race/shutuba.html?race_id=" + race_id

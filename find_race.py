@@ -2,6 +2,7 @@ import time
 import bs4
 import re
 import driver_init
+from selenium.webdriver.common.by import By
 
 def get_race_list(date):
     page = "https://race.netkeiba.com/top/race_list_sub.html?kaisai_date=" + date.strftime('%Y%m%d')

@@ -1,6 +1,5 @@
 from selenium import webdriver
 from get_chrome_driver import GetChromeDriver
-from selenium.webdriver.common.by import By
 
 get_driver = GetChromeDriver()
 get_driver.install()
