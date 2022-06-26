@@ -8,7 +8,7 @@ def get_race_list(date):
     
     driver = driver_init.driver_init()
     driver.get(page)
-    count = len(driver.find_elements_by_id("RaceTopRace"))
+    count = len(driver.find_elements(By.ID, "RaceTopRace"))
 
     info =[]
 
