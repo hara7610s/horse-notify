@@ -2,13 +2,14 @@ import time
 import bs4
 import re
 import driver_init
+from selenium.webdriver.common.by import By
 
 def get_race_list(date):
     page = "https://race.netkeiba.com/top/race_list_sub.html?kaisai_date=" + date.strftime('%Y%m%d')
     
     driver = driver_init.driver_init()
     driver.get(page)
-    count = len(driver.find_elements_by_id("RaceTopRace"))
+    count = len(driver.find_elements(By.ID, "RaceTopRace"))
 
     info =[]
 
