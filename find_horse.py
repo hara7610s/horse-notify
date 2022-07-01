@@ -8,7 +8,7 @@ def make_entry_dict(race_id):
     driver = driver_init.driver_init()
     driver.get(url)
 
-    RaceCourse = driver.find_element(By.ID, 'RaceKaisaiWrap').find_element(By.CLASS_NAME, 'Active').find_element(By.TAG_NAME, 'a').text
+    RaceCourse = driver.find_element(By.CLASS_NAME, 'RaceKaisaiWrap').find_element(By.CLASS_NAME, 'Active').find_element(By.TAG_NAME, 'a').text
     RaceNum = driver.find_element(By.ID, 'RaceNum').text
     RaceName = driver.find_element(By.ID, 'RaceName').text
 
