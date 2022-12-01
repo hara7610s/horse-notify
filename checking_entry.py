@@ -1,6 +1,7 @@
 import time
 import line
 
+
 def notify_entry(entry_dict, my_dict):
     for my_horse in my_dict:
         if my_horse in list(entry_dict.keys()):
