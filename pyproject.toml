@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "horse-notify"
+version = "1.0.0"
+description = ""
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [
+  {name = "Soichiro Hara", email = ""},
+]
+dependencies = [
+    'polars',
+    'beautifulsoup4',
+    'requests',
+    'selenium',
+    'get-chrome-driver',
+    'lxml',
+    'gspread',
+    'oauth2client',
+    'ruff',
+    'pytest'
+]
+
+### uvでoptional-dependencies使う方法よくわからない
+[project.optional-dependencies]
+dev = ["ruff"]
+test = ["pytest"]
+
+[project.urls]
+Repository = 'https://github.com/hara7610s/horse-notify'
+
+[tool.ruff]
+include = ["*.py", "**/pyproject.toml"]
+
+[tool.ruff.lint]
+select = [
+  "F",  # pyflakes
+  "I",  # isort
+  "UP",  # pyupgrade
+  "E",  # pycodestyle
+  "W",  # warning
+  "D",  # pydocstyle
+  # D417  # undocumented parameter. FIXME: get this passing
+]
+ignore = []
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+# Ignore pycodestyle in tests
+"tests/*py" = ["D"]

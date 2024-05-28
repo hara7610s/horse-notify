@@ -16,28 +16,33 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{secrets.GITHUB_TOKEN}}
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v3
+    
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.11
+          python-version: 3.12
+
+      - name: Install uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo $HOME/.cargo/bin >> $GITHUB_PATH
+
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install beautifulsoup4
-          pip install requests
-          pip install selenium
-          pip install get-chrome-driver --upgrade
-          pip install lxml
-          pip install gspread
-          pip install oauth2client
+          uv venv
+          uv pip compile pyproject.toml -o requirements.txt
+          uv pip install -r requirements.txt
+
       - name: Translate secrets of base64 into json
         env:
           GCP_SECRET: ${{ secrets.GCP_SECRET }}
         run: |
           touch gcp_secret.json
           echo $GCP_SECRET | base64 --decode > gcp_secret.json
+
       - name: Run script
         env:
           LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
         run: |
+          source .venv/bin/activate
           python main.py
