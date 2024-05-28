@@ -5,12 +5,9 @@ import datetime
 import spreadsheet
 import checking_entry
 
-def main(debug=False):
-    if debug:
-        tomorrow = datetime.date(2017, 12, 24)
-    else:
-        # find race pages tomorrow
-        tomorrow = datetime.date.today() + datetime.timedelta(days=1)
+def main():
+    # find race pages tomorrow
+    tomorrow = datetime.date.today() + datetime.timedelta(days=1)
     race_id_list = find_race.get_race_list(tomorrow)
     
     # make a list of horses entered tomorrow
@@ -23,11 +20,8 @@ def main(debug=False):
 
             entry_dict.update(each_race)
 
-        if debug:
-            my_dict = {"キタサンブラック": ""}
-        else:
-            # call my horse list
-            my_dict = spreadsheet.read_spreadsheet()
+        # call my horse list
+        my_dict = spreadsheet.read_spreadsheet()
 
         line.notify_message(tomorrow)
         
