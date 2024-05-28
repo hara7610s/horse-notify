@@ -39,9 +39,10 @@ jobs:
         run: |
           touch gcp_secret.json
           echo $GCP_SECRET | base64 --decode > gcp_secret.json
-          
+
       - name: Run script
         env:
           LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
         run: |
+          source .venv/bin/activate
           python main.py
