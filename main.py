@@ -5,9 +5,12 @@ import datetime
 import spreadsheet
 import checking_entry
 
-def main():
-    # find race pages tomorrow
-    tomorrow = datetime.date.today() + datetime.timedelta(days=1)
+def main(debug=False):
+    if debug:
+        tomorrow = datetime.date(2017, 12, 24)
+    else:
+        # find race pages tomorrow
+        tomorrow = datetime.date.today() + datetime.timedelta(days=1)
     race_id_list = find_race.get_race_list(tomorrow)
     
     # make a list of horses entered tomorrow
