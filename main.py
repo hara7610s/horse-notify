@@ -23,8 +23,11 @@ def main(debug=False):
 
             entry_dict.update(each_race)
 
-        # call my horse list
-        my_dict = spreadsheet.read_spreadsheet()
+        if debug:
+            my_dict = {"キタサンブラック": ""}
+        else:
+            # call my horse list
+            my_dict = spreadsheet.read_spreadsheet()
 
         line.notify_message(tomorrow)
         
