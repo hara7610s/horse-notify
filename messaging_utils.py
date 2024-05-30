@@ -1,8 +1,25 @@
 import time
-import line
+
+import os
+import requests
+LINE_NOTIFY_TOKEN = os.environ["LINE_NOTIFY_TOKEN"]
+
+def post_message(message):
+    url = "https://notify-api.line.me/api/notify"
+    headers = {
+        "Authorization": f"Bearer {LINE_NOTIFY_TOKEN}"
+    }
+    data = {
+        "message": message
+    }
+    requests.post(
+        url,
+        headers=headers,
+        data=data
+    )
 
 
-def notify_entry(entry_dict, my_dict):
+def search_and_notify_entry(entry_dict, my_dict):
     for my_horse in my_dict:
         if my_horse in list(entry_dict.keys()):
             RaceCourse = entry_dict[my_horse][0].decode('utf-8')
@@ -17,5 +34,5 @@ def notify_entry(entry_dict, my_dict):
                 else:
                     break
             
-            line.notify_message(f'\n{RaceCourse}{RaceNum} {RaceName}\n{HorseName}{text}')
+            post_message(f'\n{RaceCourse}{RaceNum} {RaceName}\n{HorseName}{text}')
             time.sleep(2)
