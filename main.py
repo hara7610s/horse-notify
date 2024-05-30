@@ -19,12 +19,12 @@ def main():
             entry_dict.update(each_race)
 
         # call my horse list
-        my_dict = spreadsheet.read_spreadsheet()
+        my_dict = read_spreadsheet()
 
-        search_and_notify_entry(tomorrow)
+        post_message(tomorrow)
         
         # match entry list and my horse list
-        post_message(entry_dict, my_dict)
+        search_and_notify_entry(entry_dict, my_dict)
 
 if __name__ == "__main__":
     main()
