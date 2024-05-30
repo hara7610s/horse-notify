@@ -1,7 +1,7 @@
 import datetime
 
 from messaging_utils import post_message, search_and_notify_entry
-from scraping_utils import spreadsheet, get_race_list, find_horses
+from scraping_utils import read_spreadsheet, get_race_list, find_horses
 
 def main():
     # find race pages tomorrow
