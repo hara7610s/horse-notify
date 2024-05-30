@@ -1,7 +1,6 @@
-import line
 import datetime
 
-import checking_entry
+from messaging_utils import post_message, search_and_notify_entry
 from scraping_utils import spreadsheet, get_race_list, find_horses
 
 def main():
@@ -22,10 +21,10 @@ def main():
         # call my horse list
         my_dict = spreadsheet.read_spreadsheet()
 
-        line.notify_message(tomorrow)
+        search_and_notify_entry(tomorrow)
         
         # match entry list and my horse list
-        checking_entry.notify_entry(entry_dict, my_dict)
+        post_message(entry_dict, my_dict)
 
 if __name__ == "__main__":
     main()

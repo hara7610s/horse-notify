@@ -3,10 +3,22 @@ import re
 
 import bs4
 import gspread
+from get_chrome_driver import GetChromeDriver
 from oauth2client.service_account import ServiceAccountCredentials
-
-import driver_init
+from selenium import webdriver
 from selenium.webdriver.common.by import By
+
+
+get_driver = GetChromeDriver()
+get_driver.install()
+ 
+def driver_init():
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+ 
+    driver = webdriver.Chrome(options=options)
+ 
+    return driver
 
 
 def read_spreadsheet():
@@ -34,7 +46,7 @@ def read_spreadsheet():
 def get_race_list(date):
     page = "https://race.netkeiba.com/top/race_list_sub.html?kaisai_date=" + date.strftime('%Y%m%d')
     
-    driver = driver_init.driver_init()
+    driver = driver_init()
     driver.get(page)
     count = len(driver.find_elements(By.ID, "RaceTopRace"))
 
@@ -73,7 +85,7 @@ def get_race_list(date):
 def find_horses(race_id):
     url = "https://race.netkeiba.com/race/shutuba.html?race_id=" + race_id
     
-    driver = driver_init.driver_init()
+    driver = driver_init()
     driver.get(url)
 
     RaceCourse = driver.find_element(By.CLASS_NAME, 'RaceKaisaiWrap').find_element(By.CLASS_NAME, 'Active').find_element(By.TAG_NAME, 'a').text
